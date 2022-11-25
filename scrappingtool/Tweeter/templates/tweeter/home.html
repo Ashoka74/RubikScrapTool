@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+	.switch {
+	  position: relative;
+	  display: inline-block;
+	  width: 60px;
+	  height: 34px;
+	}
+	
+	.switch input { 
+	  opacity: 0;
+	  width: 0;
+	  height: 0;
+	}
+	
+	.slider {
+	  position: absolute;
+	  cursor: pointer;
+	  top: 0;
+	  left: 0;
+	  right: 0;
+	  bottom: 0;
+	  background-color: #ccc;
+	  -webkit-transition: .4s;
+	  transition: .4s;
+	}
+	
+	.slider:before {
+	  position: absolute;
+	  content: "";
+	  height: 26px;
+	  width: 26px;
+	  left: 4px;
+	  bottom: 4px;
+	  background-color: white;
+	  -webkit-transition: .4s;
+	  transition: .4s;
+	}
+	
+	input:checked + .slider {
+	  background-color: #2196F3;
+	}
+	
+	input:focus + .slider {
+	  box-shadow: 0 0 1px #2196F3;
+	}
+	
+	input:checked + .slider:before {
+	  -webkit-transform: translateX(26px);
+	  -ms-transform: translateX(26px);
+	  transform: translateX(26px);
+	}
+	
+	/* Rounded sliders */
+	.slider.round {
+	  border-radius: 34px;
+	}
+	
+	.slider.round:before {
+	  border-radius: 50%;
+	}
+	</style>
+
+
+<div
+	class="container"
+	style="text-align: center; top: 20%; position: absolute; width: 100%"
+>
+	<div class="row">
+		<div class="col-md-4">
+			<div class="card">
+				<div class="card-body">
+					<h1 class="card-title">Web Scrapper</h1></br>
+					<p class="card-text">
+						This is a simple application to scrap data from a website.
+					</p>
+					<form>
+						<script language="javascript">
+							function hideA(x) {
+								if (x.checked) {
+									path = '/reddit/';
+									document.getElementById('Tweeter_Stuff').style.visibility =
+										'hidden';
+									document.getElementById('Tweeter_Stuff').style.display =
+										'none';
+									document.getElementById('Reddit_Stuff').style.visibility =
+										'visible';
+									document.getElementById('Reddit_Stuff').style.display =
+										'block';
+									document.getElementById('News_Stuff').style.visibility =
+										'hidden';
+									document.getElementById('News_Stuff').style.display =
+                                        'none';
+								}
+							}
+							function hideB(x) {
+								if (x.checked) {
+									path = '/twitter/';
+									document.getElementById('Reddit_Stuff').style.visibility =
+										'hidden';
+									document.getElementById('Reddit_Stuff').style.display =
+										'none';
+									document.getElementById('Tweeter_Stuff').style.visibility =
+										'visible';
+									document.getElementById('Tweeter_Stuff').style.display =
+                                        'block';
+									document.getElementById('News_Stuff').style.visibility =
+										'hidden';
+									document.getElementById('News_Stuff').style.display =
+                                        'none';
+                                    
+								}
+							}
+							function hideC(x) {
+								if (x.checked) {
+									path = '/news/';
+									document.getElementById('Reddit_Stuff').style.visibility =
+										'hidden';
+									document.getElementById('Reddit_Stuff').style.display =
+										'none';
+									document.getElementById('Tweeter_Stuff').style.visibility =
+										'hidden';
+									document.getElementById('Tweeter_Stuff').style.display =
+                                        'none';
+									document.getElementById('News_Stuff').style.visibility =
+										'visible';
+									document.getElementById('News_Stuff').style.display =
+                                        'block';
+									
+                                    
+								}
+							}
+							function hideE(x) {
+								if (x.checked) {
+									document.getElementById('hashtag').style.visibility =
+										'hidden';
+									document.getElementById('hashtag').style.display = 'none';
+									document.getElementById('username').style.visibility =
+										'visible';
+									document.getElementById('username').style.display = 'block';
+
+								}
+							}
+							function hideF(x) {
+								if (x.checked) {
+									document.getElementById('username').style.visibility =
+										'hidden';
+									document.getElementById('username').style.display = 'none';
+									document.getElementById('hashtag').style.visibility =
+										'visible';
+								    document.getElementById('hashtag').style.display = 'block'; 
+									
+								}
+							}
+							function hideG(x) {
+								if (x.checked) {
+									document.getElementById('medias_list').style.visibility =
+									'visible';
+									document.getElementById('medias_list').style.display = 'block';
+									document.getElementById('limit').style.visibility =
+									'visible';
+									document.getElementById('limit').style.display = 'block';
+									document.getElementById('start_date').style.visibility =
+									'visible';
+									document.getElementById('start_date').style.display = 'block';
+									document.getElementById('end_date').style.visibility =
+									'visible';
+									document.getElementById('end_date').style.display = 'block';
+								}
+							}
+							function hideH(x) {
+								if (x.checked) {
+									document.getElementById('sources').style.visibility =
+									'visible';
+									document.getElementById('sources').style.display = 'block';									
+								}
+							}
+							function hideI(x) {
+								if (x.checked) {
+									document.getElementById('limit').style.visibility =
+									'visible';
+									document.getElementById('limit').style.display = 'block';
+									document.getElementById('sources').style.visibility =
+									'hidden';
+									document.getElementById('sources').style.display = 'none';
+								}
+							}
+						</script>
+
+						<input
+							type="radio"
+							name="net_button"
+							value="red_button"
+							id="red_button"
+							x.checked="true"
+							onchange="hideA(this)"
+						/>
+						<label for="red_button">Reddit</label>
+						<input
+							type="radio"
+							name="net_button"
+							value="twit_button"
+							id="twit_button"
+							onchange="hideB(this)"
+						/>
+						<label for="twit_button">Twitter</label>
+						<input
+							type="radio"
+							name="net_button"
+							value="news_button"
+							id="news_button"
+							x.checked="true"
+							onchange="hideC(this)"
+						/>
+						<label for="news_button">News</label>
+
+					</form>
+
+					<form action="/news/" method="POST">
+						{% csrf_token %}
+						<!-- News -->
+						<div
+							class="form-group"
+							id="News_Stuff"
+							style="visibility: hidden; display: none"
+						>
+							
+							
+							<div
+								class="form-group"
+								id="keyword"
+								style="visibility: visible; display: block"
+							>
+							
+								<label for="keyword"></label>
+								<input
+									type="text"
+									class="form-control"
+									id="keyword"
+									name="keyword"
+									placeholder="What keyword do you want to scrap? (example: Mac AND Apple OR 'Steve Jobs')"
+									style="width: 30%"
+								/></br>
+								
+							</div>
+							<p> From: 
+								<form>
+									<input
+										type="radio"
+										id="title"
+										name="search_in"
+										value="title"
+										onchange = 'hideG(this)'
+										x.checked="true"
+									/>
+									<label for="title">headings</label>
+									<input
+										type="radio"
+										id="summary"
+										name="search_in"
+										value="summary"
+										onchange = 'hideG(this)'
+										x.checked="false"
+									/>
+									<label for="summary">content</label>
+								</form></p></br>
+								<div class="form-group"
+							id = "limit"
+							style="visibility: hidden; display: none"
+							>
+								<label for="limit"></label>
+								<input
+									type="text"
+									class="form-control"
+									id="limit"
+									name="limit"
+									placeholder="How many articles do you want to scrap?"
+									style="width: 30%"
+								/></br></br>
+							</div>
+							<div class="form-group"
+							id = "start_date"
+							style="visibility: hidden; display: none"
+							><p> From:
+							<label for="start_date"></label>
+								<input
+									type="date"
+									class="form-control"
+									id="start_date"
+									name="start_date"
+									placeholder="Starting Date (example: 2022/06/01 or 'six months ago')"
+									style="width: 10%"
+								/>
+							</div>
+							<div class="form-group"
+							id = "end_date"
+							style="visibility: hidden; display: none"
+							><p> To:
+							<label for="end_date"></label>
+								<input
+									type="date"
+									class="form-control"
+									id="end_date"
+									name="end_date"
+									placeholder="Ending Date (example: 2022/12/01) or 'today'"
+									style="width: 10%"
+								/></br></br></p></p>
+							</div>
+							<div
+								class="form-group"
+								id="medias_list"
+								name="medias_list"
+								style="visibility: hidden; display: none"
+								
+							>
+							<!-- for each checked box in medias_list, return the value if the button is checked -->
+								<form>
+									<input
+										type="checkbox"
+										name = "business"
+										id="business"
+										value="off"
+										onchange = "this.value= this.checked ? 'politic OR business OR finance OR economy' : 'off'"
+										
+									/>
+									<label for="business">Business</label>
+									<input
+										type="checkbox"
+										name = "mainstream"
+										id="mainstream"
+										value="off"
+										onchange = "this.value= this.checked ? 'news' : 'off'"
+										
+									/>
+									<label for="mainstream">News</label>
+									<input
+									type="checkbox"
+									name = "science"
+									id="science"
+									value="off"
+									onchange = "this.value= this.checked ? 'science OR energy OR tech' : 'off'"
+									
+								/>
+								<label for="science">Science</label>
+								<input
+									type="checkbox"
+									name = "culture"
+									id="culture"								
+									value="off"
+									onchange = "this.value= this.checked ? 'food OR world OR entertainment OR travel OR gaming OR music OR beauty' : 'off'"
+									
+								/>
+									
+								<label for="culture">Culture</label>
+								<input
+									type="checkbox"
+									id="source"
+									value="source"
+									onchange = 'hideH(this)'
+									x.checked="false"
+								/>
+								<label for="source">Source (manual)</label>
+								</form>
+
+														
+							</div>
+
+							<div
+								class="form-group"
+								id="sources"
+								style="visibility: hidden; display: none"
+							>
+								<label for="sources"></label>
+								<input
+									type="text"
+									class="form-control"
+									id="sources"
+									name="sources"
+									placeholder="Which sources do you want to scrap from? (separate per comma)"
+									style="width: 30%"
+								/></br></br>
+								<h3>S.W.O.T</br>
+									<label class="switch">
+										<input type="checkbox" id="swot" name="swot" value="off" onchange="this.value= this.checked ? 'on' : 'off'">
+										<span class="slider round"></span>
+	
+								</label></h3>		
+								<h3>P.E.S.T.L.E</br>
+								<label class="switch">
+									<input type="checkbox" id="pestle" name="pestle" value="off" onchange="this.value= this.checked ? 'on' : 'off'">
+									<span class="slider round"></span>
+
+									</label></h3>
+								  
+						<button type="submit" class="btn btn-primary">Submit</button>
+
+						</div>
+				
+					</form>
+				</div>
+
+					<form action="/twitter/" method="POST">
+						{% csrf_token %}
+						<!-- Tweeter -->
+						<div
+							class="form-group"
+							id="Tweeter_Stuff"
+							style="visibility: hidden; display: none"
+						>
+							<form>
+								<input
+									type="radio"
+									id="hash_type"
+									name="scrap_type"
+									value="hashtag"
+									onchange="hideF(this)"
+									x.checked="false"
+								/>
+								<label for="hashtag">Hashtags</label>
+								<input
+									type="radio"
+									id="user_type"
+									name="scrap_type"
+									value="username"
+									onchange="hideE(this)"
+									x.checked="false"
+								/>
+
+								<label for="username">Username</label>
+							</form></br></br>
+
+							<div
+								class="form-group"
+								id="username"
+								style="visibility: hidden; display: none"
+							>
+								<label for="username"></label>
+								<input
+									type="text"
+									class="form-control"
+									id="username"
+									name="username"
+									placeholder="What account username do you want to scrap?"
+									style="width: 30%"
+								/></br></br>
+								
+							</div>
+							<div
+								class="form-group"
+								id="hashtag"
+								style="visibility: hidden; display: none"
+							>
+								<label for="hashtag"></label>
+								<input
+									type="text"
+									class="form-control"
+									id="hashtag"
+									name="hashtag"
+									placeholder="What hashtags do you want to scrap? (separate per comma)"
+									style="width: 30%"
+								/></br></br>
+								
+								
+							</div>
+
+							<div class="form-group"
+								id = "start_date"
+								><p> From:
+								<label for="start_date"></label>
+									<input
+										type="date"
+										class="form-control"
+										id="start_date"
+										name="start_date"
+										placeholder="Starting Date (example: 2022/06/01 or 'six months ago')"
+										style="width: 10%"
+									/>
+								</div>
+							<div class="form-group"
+								id = "end_date"
+								><p> To:
+								<label for="end_date"></label>
+									<input
+										type="date"
+										class="form-control"
+										id="end_date"
+										name="end_date"
+										placeholder="Ending Date (example: 2022/12/01) or 'today'"
+										style="width: 10%"
+									/></br></br></p></p>
+							</div>
+
+							<div class="form-group">
+								<label for="limit"></label>
+								<input
+									type="text"
+									class="form-control"
+									id="limit"
+									name="limit"
+									placeholder="How many tweets do you want to scrap?"
+									style="width: 30%"
+								/></br></br>	
+
+								<h3>S.W.O.T</br>
+									<label class="switch">
+										<input type="checkbox" id="swot" name="swot" value="off" onchange="this.value= this.checked ? 'on' : 'off'">
+										<span class="slider round"></span>
+	
+								</label></h3>
+								<h3>P.E.S.T.L.E</br>
+								<label class="switch">
+									<input type="checkbox" id="pestle" name="pestle" value="off" onchange="this.value= this.checked ? 'on' : 'off'">
+									<span class="slider round"></span>
+
+									</label></h3>
+								
+							</div>
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+					</form>
+
+					<!-- Reddit -->
+					<form action="/reddit/" method="POST">
+						{% csrf_token %}
+						<div
+							class="form-group"
+							id="Reddit_Stuff"
+							style="visibility: hidden; display: none"
+						>
+							<div class="form-group">
+								<label for="hashtag"></label>
+								<input
+									type="text"
+									class="form-control"
+									id="subreddit"
+									name="subreddit"
+									placeholder="Which subreddit do you want to scrap?"
+									style="width: 30%"
+								/></br></br>
+							</div>
+							<div class="form-group">
+								<label for="hashtag"></label>
+								<input
+									type="text"
+									class="form-control"
+									id="limit"
+									name="limit"
+									placeholder="How many comments do you want to scrap?"
+									style="width: 30%"
+								/></br></br>			
+								<h3>S.W.O.T</br>
+									<label class="switch">
+										<input type="checkbox" id="swot" name="swot" value="off" onchange="this.value= this.checked ? 'on' : 'off'">
+										<span class="slider round"></span>
+	
+									  </label></h3>			
+									  <h3>Emotion Cluster</br>
+									<label class="switch">
+										<input type="checkbox" id="emotion" name="emotion" value="off" onchange="this.value= this.checked ? 'on' : 'off'">
+										<span class="slider round"></span>
+										</label></h3>	
+											  	
+							</div>
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div>{% if data %} {{ data }} {% endif %}</div>
+
+</html>

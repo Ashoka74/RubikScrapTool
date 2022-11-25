@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+{% if SWOT_analysis %}
+<h3> S.W.O.T analysis of {{ keyword }}: </h3> </br></br>
+<b> {{ SWOT_analysis }} </b> </br></br>
+<p> Positive Elements </p>
+{{ df }}
+</br></br>
+<p> Negative Elements </p>
+{{ df2 }}
+</br></br>
+	<p>{{data}}</p>{{emotion}}
+</div>
+{% endif %}
+
+{% if PESTLE_analysis %}
+<h3> P.E.S.T.L.E analysis of {{ keyword }}: </h3> </br></br>
+<b> {{ PESTLE_analysis }} </b> </br></br>
+
+{{ df }}
+</br></br>
+</br></br>
+	<p>{{data}}</p>{{emotion}}
+</div>
+{% endif %}
+
+
+
+</html>
