@@ -128,7 +128,7 @@ def NewsScrap(request):
             end_date = 'today'
 
         newscatcherapi = NewsCatcherApiClient(
-            x_api_key='M10iWsuK7qEgq-6rdarZJj99uP_cvqyIKPMWmTsVAFQ')
+            x_api_key='YOUR_API_KEY')
 
 
         all_articles = newscatcherapi.get_search_all_pages(q=keyword,
